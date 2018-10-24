@@ -52,7 +52,7 @@ def login(request):
 
 def success(request):
     dictionary = {
-        'users' : User.objects.exclude(name=request.session['name']), 
+        'users' : User.objects.exclude(name=request.session['name']).order_by('-counter', 'name'), 
         'currUser' : User.objects.get(id=request.session['id'])
 
     }
